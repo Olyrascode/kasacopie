@@ -1,33 +1,41 @@
-import { useState } from 'react';
-
-import data from "../logements.json";
+import { useState, useEffect } from 'react';
+import { useParams } from 'react-router-dom';
+import data from '../logements.json';
 
 function Carousel() {
-    //reset des positions
   const [currentIndex, setCurrentIndex] = useState(0);
-    //fleches suivant
+  const { id } = useParams();
+  const pictures = data.find(item => item.id === id)?.pictures;
+
+  useEffect(() => {
+    // Mettez à jour l'index du carrousel lorsque l'id sélectionné change
+    const selectedData = data.find(item => item.id === id);
+    const selectedIndex = selectedData ? data.indexOf(selectedData) : 0;
+    setCurrentIndex(selectedIndex);
+  }, [id]);
+
   const goToNext = () => {
-    setCurrentIndex((prevIndex) => (prevIndex + 1) % data.length);
+    setCurrentIndex((prevIndex) => (prevIndex + 1) % (pictures.length || 1));
   };
-    //fleche precedent
+
   const goToPrev = () => {
-    setCurrentIndex((prevIndex) => (prevIndex - 1 + data.length) % data.length);
+    setCurrentIndex((prevIndex) => (prevIndex - 1 + (pictures.length || 1)) % (pictures.length || 1));
   };
 
   return (
-    //création du html dynamique//
     <div className="carousel-container">
       <div className="carousel">
         <button onClick={goToPrev} className="arrow left-arrow">&#9665;</button>
-        <img src={data[currentIndex].cover} alt="Cover" className="cover-image" />
+        {pictures && pictures.length > 0 && (
+          <img src={pictures[currentIndex]} alt="Cover" className="cover-image" />
+        )}
         <button onClick={goToNext} className="arrow right-arrow">&#9655;</button>
       </div>
-    <div>
-    <h1>{data[currentIndex].title}</h1>
     </div>
-    </div>
- 
   );
 }
 
 export default Carousel;
+
+
+

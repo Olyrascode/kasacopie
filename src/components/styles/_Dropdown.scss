@@ -16,6 +16,7 @@
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    align-items: center;
     h1 {
       margin-left: 15px;
       color: #fff;
@@ -25,6 +26,39 @@
       font-weight: 500;
       line-height: 142.6%; /* 34.224px */
     }
+    // .button_arrow {
+    //   display: flex;
+    //   height: 66px;
+    //   justify-content: center;
+    //   padding: 0;
+    //   background-color: #ff6060;
+    //   border-radius: 25px;
+    //   width: 50px;
+    //   .arrow {
+    //     border: 2px solid green;
+    //   }
+    // }
+    .arrow_div {
+     
+
+      width: 25px;
+      height: 15px;
+      margin-right: 20px;
+      transform: rotate(180deg);
+      .arrow {
+        position: relative;
+      }
+    }
+    .arrow-rotate {
+      transform: rotate(0deg);
+      transition: transform 0.3s ease; /* Ajoutez une transition pour une animation plus fluide */
+      
+    }
+    .arrow-reverse {
+      transform: rotate(180deg);
+      transition: transform 0.3s ease; /* Ajoutez une transition pour une animation plus fluide */
+    }
+    
   }
   .item_text {
     padding: 20px;

@@ -1,6 +1,8 @@
 import { useState } from 'react';
 
-const Dropdown = () => {
+import Arrow from './assets/images/arrow.png';
+
+const Boite = () => {
     const [fiabiliteOpen, setFiabiliteOpen] = useState(false);
     const [respectOpen, setRespectOpen] = useState(false);
     const [serviceOpen, setServiceOpen] = useState(false);
@@ -27,7 +29,14 @@ const Dropdown = () => {
         <div className='item_box'>
             <div className='item_content'>
             <h1>Fiabilité</h1>
-          <button onClick={toggleFiabilite}></button>
+          {/* <button className='button_arrow' onClick={toggleFiabilite}>
+          </button> */}
+           <div
+            className={`arrow_div ${fiabiliteOpen ? 'arrow-rotate' : ''} ${fiabiliteOpen === false ? 'arrow-reverse' : ''}`}
+            onClick={toggleFiabilite}
+          >
+            <img className='arrow' src={Arrow} alt="fleche boite" />
+          </div>
           </div>
           {fiabiliteOpen && (
               <div className='item_text'>
@@ -43,7 +52,13 @@ const Dropdown = () => {
         <div className='item_box'>
             <div className='item_content'>
                 <h1>Respect</h1>
-          <button onClick={toggleRespect}></button>
+          {/* <button onClick={toggleRespect}></button> */}
+          <div
+            className={`arrow_div ${respectOpen ? 'arrow-rotate' : ''} ${respectOpen === false ? 'arrow-reverse' : ''}`}
+            onClick={toggleRespect}
+          >
+            <img className='arrow' src={Arrow} alt="fleche boite" />
+          </div>
             </div>
           {respectOpen && (
             <div className='item_text'>
@@ -59,7 +74,13 @@ const Dropdown = () => {
         <div className='item_box'>
             <div className='item_content'>
                 <h1>Service</h1>
-          <button onClick={toggleService}></button>
+          {/* <button onClick={toggleService}></button> */}
+          <div
+            className={`arrow_div ${serviceOpen ? 'arrow-rotate' : ''} ${serviceOpen === false ? 'arrow-reverse' : ''}`}
+            onClick={toggleService}
+          >
+            <img className='arrow' src={Arrow} alt="fleche boite" />
+          </div>
             </div>
           {serviceOpen && (
             <div className='item_text'>
@@ -74,7 +95,13 @@ const Dropdown = () => {
         <div className='item_box'>
             <div className='item_content'>
                 <h1>Sécurité</h1>
-          <button onClick={toggleSecurite}></button>
+          {/* <button onClick={toggleSecurite}></button> */}
+          <div
+            className={`arrow_div ${securiteOpen ? 'arrow-rotate' : ''} ${securiteOpen === false ? 'arrow-reverse' : ''}`}
+            onClick={toggleSecurite}
+          >
+            <img className='arrow' src={Arrow} alt="fleche boite" />
+          </div>
             </div>
           {securiteOpen && (
             <div className='item_text'>
@@ -93,4 +120,4 @@ const Dropdown = () => {
     );
   };
   
-  export default Dropdown;
+  export default Boite;
